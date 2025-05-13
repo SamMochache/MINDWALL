@@ -1,0 +1,22 @@
+#virtual env
+/threadd
+#pycache
+/__pycache__/
+#pyc
+*.pyc
+#pyo
+*.pyo
+#pyd
+*.pyd
+#egg-info
+*.egg-info
+#dist
+/dist
+
+#migration
+migrations
+#sqlite
+*.sqlite3
+
+#environment variables
+.env
