@@ -1,0 +1,58 @@
+.home-container {
+    background: url('laake.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+  }
+  
+  .glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 3rem 2.5rem;
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  }
+  
+  .home-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .home-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .get-started-btn {
+    font-size: 1rem;
+    padding: 0.6rem 1.5rem;
+  }
+  
+  @media (max-width: 576px) {
+    .glass-card {
+      padding: 2rem 1.2rem;
+    }
+  
+    .home-title {
+      font-size: 1.6rem;
+    }
+  
+    .home-subtitle {
+      font-size: 0.90rem;
+    }
+  
+    .get-started-btn {
+      font-size: 0.9rem;
+      padding: 0.5rem 1.2rem;
+    }
+  }
+  
