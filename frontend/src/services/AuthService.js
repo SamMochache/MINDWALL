@@ -1,7 +1,7 @@
 // src/services/AuthService.js
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8000/api/auth/';
+const API_URL = 'api/auth/';
 
 class AuthService {
   // Register a new user

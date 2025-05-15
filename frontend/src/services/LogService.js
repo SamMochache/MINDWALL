@@ -1,7 +1,8 @@
 // src/services/LogService.js
 import axios from 'axios';
+import AuthService from './AuthService';
 
-const API_URL = 'http://localhost:8000/api/logs/';
+const API_URL = '/api/logs/';  // Changed from 'http://localhost:8000/api/logs/'
 
 class LogService {
   constructor() {
@@ -14,9 +15,6 @@ class LogService {
         // If error is due to expired token and we haven't tried refreshing yet
         if (error.response?.status === 401 && !originalRequest._retry) {
           originalRequest._retry = true;
-          
-          // Import here to avoid circular dependency
-          const AuthService = await import('./AuthService').then(module => module.default);
           
           const refreshSuccess = await AuthService.refreshToken();
           if (refreshSuccess) {
