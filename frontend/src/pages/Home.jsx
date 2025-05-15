@@ -12,7 +12,7 @@ const Home = () => {
         <p className="home-subtitle">
           Detect, analyze, and respond to cyber threats in real-time using intelligent automation.
         </p>
-        <button className="btn btn-primary get-started-btn" onClick={() => navigate('/dashboard')}>
+        <button className="btn btn-primary get-started-btn" onClick={() => navigate('/login')}>
           Get Started
         </button>
       </div>
