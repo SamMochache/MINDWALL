@@ -114,4 +114,4 @@ Based on the threat level, the system will automatically:
 
 ## License
 
-[MIT License](LICENSE)
+[Sam Mochache &COPY](https://thread-6im3.onrender.com/)
