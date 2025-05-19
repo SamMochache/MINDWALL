@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: Mindwall-backend
+    env: python
+    region: ohio
+    buildCommand: "./build.sh"
+    startCommand: "cd backend && gunicorn --workers=2 backend.wsgi:application"
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: False
+      - key: ALLOWED_HOSTS
+        value: ".onrender.com"
+      - key: CORS_ORIGINS
+        value: "https://mindwall-frontend.onrender.com"
+      - key: PYTHON_VERSION
+        value: 3.11.0
