@@ -4,7 +4,7 @@ services:
     env: python
     region: ohio
     buildCommand: "./build.sh"
-    startCommand: "cd backend && gunicorn --workers=2 backend.wsgi:application"
+    startCommand: "gunicorn --workers=2 backend.wsgi:application"
     envVars:
       - key: SECRET_KEY
         generateValue: true
