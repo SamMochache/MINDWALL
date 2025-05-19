@@ -17,6 +17,7 @@ The application consists of:
 - **Backend**: Django REST API with models for Logs and Responses
 - **Frontend**: React-based dashboard with Bootstrap styling
 - **AI component**: Threat detection and response policy engine
+- 
 
 ## Prerequisites
 
@@ -106,12 +107,28 @@ Based on the threat level, the system will automatically:
 
 ## Future Improvements
 
-- Machine learning-based threat detection
-- Integration with SIEM systems
-- User authentication and role-based access control
-- Advanced analytics and reporting
-- Real-time notification system
+- Machine learning-based threat detection  
+- Integration with SIEM systems  
+- User authentication and role-based access control  
+- Advanced analytics and reporting  
+- Real-time notification system  
+- Automated log ingestion from external systems:  
+  - Integration with log shippers like Filebeat, Fluentd, or Logstash  
+  - Support for syslog messages from servers, firewalls, and IDS/IPS devices  
+  - Ability to parse and normalize logs from various formats  
+- Log ingestion security:  
+  - API key or token-based authentication for log sources  
+  - Input validation and rate limiting for log submissions  
+  - Secure log transmission over HTTPS  
+- Dashboard enhancements:  
+  - Live threat heatmaps  
+  - Timeline-based incident playback  
+  - Log source status monitoring  
+- Deployment improvements:  
+  - Dockerization with CI/CD pipeline  
+  - Horizontal scaling support for high-volume environments  
+
 
 ## License
 
-[MIT License](LICENSE)
+[Sam Mochache &COPY](https://thread-6im3.onrender.com/)
