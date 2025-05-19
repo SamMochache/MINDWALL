@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { Badge, Button, Spinner } from 'react-bootstrap';
+import LogService from '../services/LogService';
 import { useToast } from '../context/ToastContext';
 
 const badgeColor = {
@@ -17,13 +18,16 @@ const LogCard = ({ log, onResponseTriggered, highlight }) => {
   const triggerResponse = async () => {
     setLoading(true);
     try {
-      await axios.post(`http://localhost:8000/api/logs/${log.id}/respond/`);
+      // Use LogService instead of direct axios call
+      await LogService.triggerResponse(log.id);
       showToast("✅ Response triggered successfully", "success");
       onResponseTriggered();
     } catch (err) {
-      showToast("❌ Failed to trigger response", "danger");
+      console.error("Response trigger error:", err);
+      showToast(`❌ Failed to trigger response: ${err.response?.data?.detail || "Unknown error"}`, "danger");
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   return (
@@ -32,9 +36,9 @@ const LogCard = ({ log, onResponseTriggered, highlight }) => {
         <div>
           <h5 className="card-title mb-1 d-flex justify-content-between align-items-center">
             <span>{log.source_ip}</span>
-            <span className={`badge bg-${badgeColor[log.threat_level] || 'secondary'}`}>
+            <Badge bg={badgeColor[log.threat_level] || 'secondary'}>
               {log.threat_level}
-            </span>
+            </Badge>
           </h5>
           <p className="mb-2"><small className="text-muted">{new Date(log.timestamp).toLocaleString()}</small></p>
           <p className="card-text">{log.content}</p>
@@ -42,12 +46,14 @@ const LogCard = ({ log, onResponseTriggered, highlight }) => {
           {/* Response history toggle */}
           {log.responses && log.responses.length > 0 && (
             <div className="mt-2">
-              <button
-                className="btn btn-sm btn-link text-decoration-none"
+              <Button
+                variant="link"
+                size="sm"
+                className="text-decoration-none p-0"
                 onClick={() => setShowHistory(!showHistory)}
               >
                 {showHistory ? "Hide" : "Show"} Response History ({log.responses.length})
-              </button>
+              </Button>
 
               {showHistory && (
                 <ul className="list-group list-group-flush mt-2">
@@ -64,13 +70,19 @@ const LogCard = ({ log, onResponseTriggered, highlight }) => {
         </div>
 
         <div className="mt-3 text-end">
-          <button
-            className="btn btn-sm btn-outline-primary"
+          <Button
+            variant="outline-primary"
+            size="sm"
             onClick={triggerResponse}
             disabled={loading}
           >
-            {loading ? "Responding..." : "Trigger Response"}
-          </button>
+            {loading ? (
+              <>
+                <Spinner animation="border" size="sm" className="me-1" />
+                <span>Responding...</span>
+              </>
+            ) : "Trigger Response"}
+          </Button>
         </div>
       </div>
     </div>
