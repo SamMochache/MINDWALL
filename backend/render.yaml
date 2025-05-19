@@ -1,3 +1,8 @@
+databases:
+  - name: mindwall-db
+    databaseName: mindwalldb
+    user: mindwalluser
+
 services:
   - type: web
     name: Mindwall-backend
@@ -16,3 +21,7 @@ services:
         value: "https://mindwall-frontend.onrender.com"
       - key: PYTHON_VERSION
         value: 3.11.0
+      - fromDatabase:
+          name: mindwall-db
+          property: connectionString
+        key: DATABASE_URL
