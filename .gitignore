@@ -20,3 +20,6 @@ migrations
 
 #environment variables
 .env
+#logs
+*.log
+logs
